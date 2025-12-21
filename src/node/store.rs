@@ -2,7 +2,7 @@ use super::{ Node, StorageErr };
 
 impl Node {
     pub fn store(&mut self, key: &String, value: &String) -> Result<(), StorageErr> {
-        if let Some(_) = self.request(&key) {
+        if let Ok(_) = self.request(&key) {
             return Err(StorageErr::AlreadyExist);
         }
         self.get_storage().insert(key.clone(), value.clone());
@@ -12,7 +12,7 @@ impl Node {
 
 #[cfg(test)]
 mod test {
-    use super::{ Node, StorageErr };
+    use super::*;
 
     #[test]
     fn store() -> Result<(), StorageErr> {

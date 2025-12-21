@@ -1,24 +1,32 @@
-use super::Node;
+use super::{ Node, StorageErr };
 
 impl Node {
-    pub fn request(&mut self, key: &String) -> Option<&String> {
-        self.get_storage().get(key)
+    pub fn request(&mut self, key: &String) -> Result<&String, StorageErr> {
+        match self.get_storage().get(key) {
+            Some(value) => Ok(value),
+            None => Err(StorageErr::NotFound),
+        }
     }
 }
 
 #[cfg(test)]
 mod test {
-    use super::Node;
+    use super::*;
     
     #[test]
-    fn request() {
-        let mut new_instance = Node::new();
+    fn request() -> Result<(), StorageErr> {
+        let mut instance = Node::new();
         let key = String::from("test.txt");
         let value = String::from("Hello.");
-        new_instance.store(&key, &value);
         assert_eq!(
-            new_instance.request(&key),
-            Some(String::from("Hello.")).as_ref()
+            instance.request(&key),
+            Err(StorageErr::NotFound)
         );
+        instance.store(&key, &value)?;
+        assert_eq!(
+            instance.request(&key),
+            Ok(&value)
+        );
+        Ok(())
     }
 }
