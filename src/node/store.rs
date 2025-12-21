@@ -7,11 +7,11 @@ impl Node {
 }
 
 #[cfg(test)]
-mod store {
+mod test {
     use super::Node;
 
     #[test]
-    fn test() {
+    fn store() {
         let mut new_instance = Node::new();
         let test_key = String::from("test.txt");
         let test_value = String::from("Hello.");

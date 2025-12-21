@@ -7,11 +7,11 @@ impl Node {
 }
 
 #[cfg(test)]
-mod erase {
+mod test {
     use super::Node;
 
     #[test]
-    fn test() {
+    fn erase() {
         let mut new_instance = Node::new();
         let key = String::from("test.txt");
         let value = String::from("Hello.");
