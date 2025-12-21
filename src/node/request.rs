@@ -23,7 +23,7 @@ mod test {
             instance.request(&key),
             Err(StorageErr::NotFound)
         );
-        instance.store(&key, &value)?;
+        instance.store(key.clone(), value.clone())?;
         assert_eq!(
             instance.request(&key),
             Ok(&value)

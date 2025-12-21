@@ -18,7 +18,7 @@ mod test {
         let mut new_instance = Node::new();
         let key = String::from("test.txt");
         let value = String::from("Hello.");
-        new_instance.store(&key, &value)?;
+        new_instance.store(key.clone(), value.clone())?;
         assert_eq!(
             new_instance.request(&key),
             Ok(&value)
