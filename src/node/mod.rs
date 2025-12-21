@@ -1,8 +1,7 @@
 pub mod structure;
-mod store;
-mod request;
-mod erase;
-mod storage_err;
+pub mod actions;
+pub mod sync;
+pub mod errors;
 
-pub use structure::Node as Node;
-pub use storage_err::StorageErr as StorageErr;
+pub use crate::node::structure::Node as Node;
+pub use crate::node::errors::storage_err::StorageErr as StorageErr;
