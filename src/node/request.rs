@@ -1,5 +1,6 @@
 use super::{ Node, StorageErr };
 
+
 impl Node {
     pub fn request(&mut self, key: &String) -> Result<&String, StorageErr> {
         match self.get_storage().get(key) {
