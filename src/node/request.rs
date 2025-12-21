@@ -1,4 +1,4 @@
-use super::{ Node, StorageErr };
+use super::*;
 
 
 impl Node {

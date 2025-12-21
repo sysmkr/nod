@@ -1,4 +1,4 @@
-use super::{ Node, StorageErr };
+use super::*;
 
 impl Node {
     pub fn erase(&mut self, key: &String) -> Result<(), StorageErr> {
