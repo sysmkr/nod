@@ -15,5 +15,16 @@ In short, a *network* is a crowd, a *cluster* is a team.
 Pairing nodes as in a cluster enables a different range/scale of capapilities. The limit is no longer the
 power of a single node, but rather the sum of each. It also eliminate single-point failure problems: in 
 the case where a node is in charge of absolutely everything, if it fails, everything is down. In a cluster,
-nodes can rely on each other, if one fails, the others will close the gap, and the service will be still 
-available and functional.
+nodes can rely on each other, if one fails, the others will close the gap, and everything will still work
+as intended.
+
+(Rework everything bellow)
+
+A *concensus engine* mentioned earlier encompass everything related to communication, role attribution
+and workload distribution. The **Raft consensus algorithm** is used here to ensure all nodes agree on the 
+same state transitions. It operates by electing a leader, replicating logs, and committing entries only
+when a majority of nodes confirm storage. This approach guarantees fault tolerance—up to (N-1)/2 nodes 
+can fail without disrupting the system—and provides strong consistency. Raft simplifies distributed 
+coordination by centralizing decision-making in the leader, who handles client requests and synchronizes 
+logs across followers. The algorithm is designed for clarity, reliability, and scalability, making it suitable 
+for systems requiring coordinated, fault-tolerant operation.
