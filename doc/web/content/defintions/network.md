@@ -1,4 +1,4 @@
 # Network
 [Definitions guidelines](../guidelines/definitions.md)
 
-A **network** is...
+![Simple network schema](../img/network.png)
